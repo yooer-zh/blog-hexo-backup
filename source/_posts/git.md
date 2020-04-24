@@ -1,10 +1,21 @@
 ---
+
 title: 深入理解Git
-tags:
-categories: 
+
+tags: Git
+
+categories:
+
 - 技术杂谈
+
   - Git
+
+date: 2019-12-28 12:00:00
+
+updated: 
+
 ---
+
 # SSH key
 
 生成命令：
@@ -29,11 +40,11 @@ categories:
 
 这时再使用 `git status` 查看状态就会显示
 
-![image-20200419125654052](git/image-20200419125654052.png)
+ ![](git/image-20200419125654052.png)
 
 此时如果使用 `git push origin master` ，会提示 不存在
 
-![image-20200419125706549](git/image-20200419125706549.png)
+ ![](git/image-20200419125706549.png)
 
 因为origin（初始）是自己创建出来的，要使用`git remote`创建，来告诉git需要推送到哪个远程仓库上去
 
@@ -59,7 +70,7 @@ categories:
 
 注意这里不再是 `origin` 而是设置为了 `origin2` 
 
-![image-20200419130834029](git/image-20200419130834029.png)
+ ![](git/image-20200419130834029.png)
 
 *附：这里不同的远程仓库可以设置到同一个origin里面，这种适用于 一次推送想推送到多个仓库里面去，使用的是git remot里面的 set url指令来设置的。*
 
@@ -83,11 +94,11 @@ categories:
 
 *注：此时快照保存的是 文件的改变，而不是文件本身，否则git仓库会非常非常大*
 
-![image-20200419131918056](git/image-20200419131918056.png)
+ ![](git/image-20200419131918056.png)
 
 ## git log
 
-![image-20200419132512720](git/image-20200419132512720.png)
+ ![](git/image-20200419132512720.png)
 
 可以看到之前的提交，是谁提交的，什么时候提交的，以及提交的日志，很重要
 
@@ -95,7 +106,7 @@ categories:
 
 ## git reflog
 
-![image-20200419132642677](git/image-20200419132642677.png)
+ ![](git/image-20200419132642677.png)
 
 主要是本地的提交，包括一些本地删除的提交，如果要撤回删除的提交，就可以使用 `git reflog`查看 hash值方便回退
 
@@ -103,7 +114,7 @@ categories:
 
 配置，查看全局配置 ： `git config --global --list`
 
-![image-20200419133726337](git/image-20200419133726337.png)
+ ![](git/image-20200419133726337.png)
 
 user.name 和 user.email 是必须要设置的，否则不能进行提交操作，如果没有设置，可以使用
 
@@ -117,25 +128,25 @@ user.name 和 user.email 是必须要设置的，否则不能进行提交操作�
 
 首先新建 `321.txt`  并再进行一次新的提交
 
-![image-20200419133649723](git/image-20200419133649723.png)
+ ![](git/image-20200419133649723.png)
 
 使用 `git log`查看
 
-![image-20200419133710364](git/image-20200419133710364.png)
+ ![](git/image-20200419133710364.png)
 
 然后使用 `git reset` 命令回退到上一个版本，再使用git log查看时发现新版本就被删除掉了
 
-![image-20200419133920268](git/image-20200419133920268.png)
+ ![](git/image-20200419133920268.png)
 
 但是使用 `git reflog` 就发现  仍然可以查看本地所有的操作日志
 
-![image-20200419134051346](git/image-20200419134051346.png)
+ ![](git/image-20200419134051346.png)
 
 # git branch
 
 创建分支
 
-![ ](git/image-20200419134328948.png)
+ ![](git/image-20200419134328948.png)
 
 这时仍然可以使用 `git reflog`查看本地所有操作，此时HEAD指向的是 master分支上，后面会多出来一个 dev 分支，这个dev分支前面没有origin，说明此时dev是一个本地分支
 
@@ -143,7 +154,7 @@ user.name 和 user.email 是必须要设置的，否则不能进行提交操作�
 
 此时进行操作 `git checkout dev` 切换到了dev分支
 
-![image-20200419134705141](git/image-20200419134705141.png)
+ ![](git/image-20200419134705141.png)
 
 `git log` 只显示了当前指向了dev分支
 
@@ -157,7 +168,7 @@ user.name 和 user.email 是必须要设置的，否则不能进行提交操作�
 
 就可以使用 `git stash` 
 
-![image-20200419135437517](git/image-20200419135437517.png)
+ ![](git/image-20200419135437517.png)
 
 此时再使用 `git status` 就会发现变成了一个clean的工作区，而且此时123.txt文件内的修改会清空
 
@@ -165,7 +176,7 @@ user.name 和 user.email 是必须要设置的，否则不能进行提交操作�
 
 使用 `git stash apply`
 
-![image-20200419135718052](git/image-20200419135718052.png)
+ ![](git/image-20200419135718052.png)
 
 文件就回来了
 
@@ -175,7 +186,7 @@ user.name 和 user.email 是必须要设置的，否则不能进行提交操作�
 
 想查看当前分支下哪些文件发生了什么变化
 
-![image-20200419152847535](git/image-20200419152847535.png)
+ ![](git/image-20200419152847535.png)
 
 # Git Flow （重点）
 
@@ -185,7 +196,7 @@ user.name 和 user.email 是必须要设置的，否则不能进行提交操作�
 
 ## 1. 适用于持续集成的模型
 
-![image-20200419153451745](git/image-20200419153451745.png)
+ ![](git/image-20200419153451745.png)
 
 在`master`分支上进行开发提交，一旦到版本需要发布的时候，就把代码合并到 `pre-production`分支上去，这样就算完成了一次测试提交了（预发布）
 
@@ -200,7 +211,7 @@ Bug -> New Branch -> master -> pre branch -> Target Branch
 
 ## 2. 类Vue、React的模型
 
-![image-20200419154036502](git/image-20200419154036502.png)
+ ![](git/image-20200419154036502.png)
 
 大家都在master分支上开发，当需要对master分支发布一个比较稳定的版本的时候，直接从master分支上新建一个分支出来，然后在这个分支上进行一些小的BUG修复
 
@@ -211,9 +222,9 @@ Bug -> New Branch -> master -> pre branch -> Target Branch
 
 ## 演示 Vue的github
 
-![image-20200419154417126](git/image-20200419154417126.png)
+ ![](git/image-20200419154417126.png)
 
-![image-20200419154428487](git/image-20200419154428487.png)
+ ![](git/image-20200419154428487.png)
 
 Vue的github上，大家都是在dev分支上玩，然后直接从dev分支checkout版本分支出来
 
@@ -241,11 +252,11 @@ Vue的github上，大家都是在dev分支上玩，然后直接从dev分支check
 
 现在，两个同事在各自的`dev`分支上 同时修改了 `123.txt`， 第一个同事 push 到 dev分支是可以正常推送的
 
-![image-20200419161047474](git/image-20200419161047474.png)
+ ![](git/image-20200419161047474.png)
 
 但是当第一位同事推送过后，第二位同事再进行push，就会出现错误
 
-![image-20200419161203326](git/image-20200419161203326.png)
+ ![](git/image-20200419161203326.png)
 
 提示说 远程的dev分支上已经有了一个**本地尚不存在**的提交
 
@@ -255,27 +266,27 @@ Vue的github上，大家都是在dev分支上玩，然后直接从dev分支check
 
    此时因为两位同事对同一个文件进行了修改，所以肯定会遇到合并冲突
 
-   ![image-20200419161449052](git/image-20200419161449052.png)
+    ![](git/image-20200419161449052.png)
 
    使用 `git status` 查看一下状态，说双方都修改了 `123.txt`
 
-   ![image-20200419161558245](git/image-20200419161558245.png)
+    ![](git/image-20200419161558245.png)
 
    此时打开 `123.txt`文件，会出现git生成的分隔
 
    上面的HEAD是本地本分支上的代码，下面就是远程代码的变化
 
-   ![image-20200419161753260](git/image-20200419161753260.png)
+    ![](git/image-20200419161753260.png)
 
    此时修改好内容，保留本地的修改，然后执行 `git add 123.txt` `git commit`
 
    ！ 此时再使用 `git status` 查看时发现当前是一个干净的分支
 
-   ![image-20200419162004499](git/image-20200419162004499.png)
+    ![](git/image-20200419162004499.png)
 
    这时再push dev 就可以了
 
-   ![image-20200419162037595](git/image-20200419162037595.png)
+    ![](git/image-20200419162037595.png)
 
 2. 先进的解决办法 `git fetch`
 
@@ -285,7 +296,7 @@ Vue的github上，大家都是在dev分支上玩，然后直接从dev分支check
 
    简单说就是看一下远端分支和我本地分支有什么不一样
 
-   ![image-20200419162700091](git/image-20200419162700091.png)
+    ![](git/image-20200419162700091.png)
 
    会提示远程有一个更新，现在已经把更新的内容放到了`FETCH_HEAD`中
 
@@ -301,7 +312,99 @@ Vue的github上，大家都是在dev分支上玩，然后直接从dev分支check
 
 
 
+# 两种工作流的实际操作
 
+## 第一种
+
+比如  现在有三个分支 `dev`  `feature`  `master` ， `feature` 分支为开发分支，`dev`为预发布分支
+
+现在要把开发分支feature上的代码 发布到预发布分支dev上
+
+ ![](git/image-20200421164947264.png)
+
+首先使用 `git checkout` 命令切换到将要合并的分支也就是dev上，然后使用 `git merge` 命令合并分支上的内容
+
+ ![](git/image-20200421165243448.png)
+
+如果`feature` 分支上的内容和 `dev` 有冲突会提示的，没有冲突就会合并了
+
+现在进行另一个操作： `dev`分支代码测试完成，需要把预发布分支`dev` 上的代码发布到正式/生产环境的分支`master`上
+
+同样的操作，checkout到master分支，然后merge dev分支的代码即可。
+
+注意就是需要 先切换到**需要合并的分支**上，再进行merge。
+
+ ![](git/image-20200421165605527.png)
+
+至此完成了 场景一 中的Git flow 工作流程。
+
+## 第二种
+
+第二种 基于版本的Git工作流需要使用一个很重要的概念就是 `git tag`
+
+`git tag` 就是给当前分支的当前这次提交打上一个 tag
+
+ ![](git/image-20200421170049950.png)
+
+*注意： 如果像之前一样只使用 `git push origin master` 推送只会推送代码，不会推送tag。如果想连同tag一起推送就需要在后面添加 `--tags` 参数*
+
+那么 添加`tag` 已经完成了，怎么删除本地tag呢？使用 `git tag -d vxxxx`删除
+
+ ![](git/image-20200421170417469.png)
+
+那么怎么删除远程tag呢？ ` git push origin :refs/tags/v1.0.0`
+
+ ![](git/image-20200421170553813.png)
+
+冒号`:` 代表前面没有任何分支的推送。
+
+同样的，怎么删除远程分支呢？ 这里删除远程dev分支为例。
+
+`git push origin :dev`
+
+ ![](git/image-20200421170742118.png)
+
+下面说一种场景的解决方法
+
+没有完成代码的功能块，但是由于一些原因，把没有完成的功能代码进行了一次提交
+
+本地还好，如果推送到了远程是很不利于code review的
+
+这里除了之前说过的 `git stash` 缓存代码以外，还可以使用 `git reset`重置一些不必要的修改
+
+如果使用 `git add .`  跟踪了不必要的文件：
+
+ ![](git/image-20200421171508653.png)
+
+git给了提示 使用 `git restore --staged <file>`
+
+另一种方法： 使用 `git reset HEAD <file>` 取消暂存
+
+ ![](git/image-20200421172027861.png)
+
+另一个场景：
+
+怎么修改已经添加到版本库里面的文件的修改呢？也就是已经拍了快照的文件。
+
+比如
+
+ ![](git/image-20200421172504481.png)
+
+`feature add file.txt`文件是已经在版本库中的文件，在里面写了代码，但是感觉不好，怎么抛弃对它的修改？
+
+同样提示 使用 `git restore <file> ` 命令，还有一种方法就是使用 `git checkout -- <file>` 
+
+ ![](git/image-20200421172647387.png)
+
+
+
+# Git Flow 的意义
+
+ ![](git/image-20200421172955830.png)
+
+# Branch分支的创建原则
+
+ ![](git/image-20200421173319262.png)
 
 
 
