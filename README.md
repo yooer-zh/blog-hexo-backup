@@ -16,3 +16,6 @@
  create mode 100644 source/categories/index.md
  create mode 100644 source/tags/index.md
  create mode 100644 themes/next/_config.yml
+
+# Snipaste 文件名
+PB-Snipaste-$HH-mm-ss-zMMzyydd$.png
