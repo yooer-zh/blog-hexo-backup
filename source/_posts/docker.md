@@ -3,9 +3,7 @@ title: Docker快速上手
 
 categories: 
 
-- 技术杂谈
-
-  - 运维
+- 运维
 
 tags: Docker
 

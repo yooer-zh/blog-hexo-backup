@@ -6,9 +6,7 @@ tags: Git
 
 categories:
 
-- 技术杂谈
-
-  - Git
+- Git
 
 date: 2019-12-28 12:00:00
 

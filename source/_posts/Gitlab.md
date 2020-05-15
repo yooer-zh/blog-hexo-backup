@@ -4,9 +4,7 @@ title: GitLab搭建(docker环境)
 
 categories: 
 
-- 技术杂谈
-
-  - Git
+- Git
 
 tags: GitLab
 
